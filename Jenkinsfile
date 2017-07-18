@@ -79,7 +79,7 @@ stage('Version Release') {
     
 //set checkpoint before deployment
 checkpoint 'Build Complete'
-
+/*
 stage('Deploy to Prod') {
 
   docker.image('jcorioland/devoxx2017attendee').inside('-v /data:/data') {
@@ -120,3 +120,4 @@ stage('Deploy to Prod') {
     }
   }
 }
+*/
