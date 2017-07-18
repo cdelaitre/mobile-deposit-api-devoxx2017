@@ -14,7 +14,18 @@ def buildVersion = null
 def short_commit = null
 echo "Building ${env.BRANCH_NAME}"
 
+pipeline {
+    agent { docker 'maven:3.3.3' }
+    stages {
+        stage('build') {
+            steps {
+                sh 'mvn --version'
+            }
+        }
+    }
+}
 
+/*
 stage ('Build') {
 
   // Asking for an agent with label 'docker-cloud'
@@ -79,7 +90,7 @@ stage('Version Release') {
     
 //set checkpoint before deployment
 checkpoint 'Build Complete'
-/*
+
 stage('Deploy to Prod') {
 
   docker.image('jcorioland/devoxx2017attendee').inside('-v /data:/data') {
