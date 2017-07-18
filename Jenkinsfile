@@ -8,7 +8,7 @@
 
 // You need to create 2 Jenkins Credentials
 // * 1 type 'Secret file', with ID 'kuby'
-// * 1 type 'username with password' with ID 'test-registry'
+// * 1 type 'username with password' with ID 'registry'
 
 def buildVersion = null
 def short_commit = null
@@ -70,7 +70,7 @@ stage('Version Release') {
     }
       
     stage('Publish Docker Image') {
-      withDockerRegistry([url: "https://${DOCKER_REGISTRY}/v2", credentialsId: 'test-registry']) { 
+      withDockerRegistry([url: "https://${DOCKER_REGISTRY}/v2", credentialsId: 'registry']) { 
         mobileDepositApiImage.push()
       }
     }
